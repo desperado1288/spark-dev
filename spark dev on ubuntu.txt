@@ -1,0 +1,41 @@
+#reference: https://www.santoshsrinivas.com/installing-apache-spark-on-ubuntu-16-04/
+
+
+wget http://mirror.stjschools.org/public/apache/spark/spark-2.1.0/spark-2.1.0-bin-hadoop2.7.tgz
+cd ~/Downloads/  
+tar xzvf spark-2.1.0-bin-hadoop2.7.tgz  
+sudo mv spark-2.1.0-bin-hadoop2.7/ /usr/lib/  
+
+
+#java
+sudo apt-add-repository ppa:webupd8team/java  
+sudo apt-get update  
+sudo apt-get install oracle-java8-installer  
+sudo apt-get install oracle-java8-set-default
+
+#maven
+sudo apt install maven
+
+#set spark-env
+cd /usr/lib/spark-2.1.0-bin-hadoop2.7/conf/  
+cp spark-env.sh.template spark-env.sh  
+vi spark-env.sh  
+###add below two lines in
+#JAVA_HOME=/usr/lib/jvm/java-8-oracle  
+#SPARK_WORKER_MEMORY=4g  
+
+
+#.profile
+vim ~/.profile
+#export JAVA_HOME=/usr/lib/jvm/java-8-oracle  
+#(export SBT_HOME=/usr/share/sbt-launcher-packaging/bin/sbt-launch.jar)
+#export SPARK_HOME=/usr/lib/spark-2.1.0-bin-hadoop2.7
+#(export PATH=$PATH:$JAVA_HOME/bin)
+#(export PATH=$PATH:$SBT_HOME/bin)
+#export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+source ~/.profile
+
+
+#test example
+cd /usr/lib/spark-2.1.0-bin-hadoop2.7
+spark-submit --master local[4] --class org.apache.spark.examples.JavaWordCount /examples/jars/spark-examples_2.11-2.1.0.jar README.md
