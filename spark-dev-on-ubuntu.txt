@@ -1,7 +1,7 @@
 #reference: https://www.santoshsrinivas.com/installing-apache-spark-on-ubuntu-16-04/
 
 cd ~/Downloads
-wget http://mirror.stjschools.org/public/apache/spark/spark-2.1.0/spark-2.1.0-bin-hadoop2.7.tgz
+wget http://mirror.stjschools.org/public/apache/spark/spark-2.1.0/spark-2.1.0-bin-hadoop2.7.tgz -P ~/Downloads
 tar xzvf spark-2.1.0-bin-hadoop2.7.tgz  
 sudo mv spark-2.1.0-bin-hadoop2.7/ /usr/lib/  
 
@@ -21,7 +21,7 @@ cp spark-env.sh.template spark-env.sh
 vi spark-env.sh  
 ###add below two lines in
 #JAVA_HOME=/usr/lib/jvm/java-8-oracle  
-#SPARK_WORKER_MEMORY=4g  
+#SPARK_WORKER_MEMORY=2g  
 
 
 #.profile
@@ -37,4 +37,4 @@ source ~/.profile
 
 #test example
 cd /usr/lib/spark-2.1.0-bin-hadoop2.7
-spark-submit --master local[4] --class org.apache.spark.examples.JavaWordCount /examples/jars/spark-examples_2.11-2.1.0.jar README.md
+spark-submit --master local[4] --class org.apache.spark.examples.JavaWordCount examples/jars/spark-examples_2.11-2.1.0.jar README.md
