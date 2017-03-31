@@ -15,10 +15,13 @@ sudo apt-get install oracle-java8-set-default
 #maven
 sudo apt install maven
 
+#vim
+sudo apt install vim
+
 #set spark-env
 cd /usr/lib/spark-2.1.0-bin-hadoop2.7/conf/  
 cp spark-env.sh.template spark-env.sh  
-vi spark-env.sh  
+vim spark-env.sh  
 ###add below two lines in
 #JAVA_HOME=/usr/lib/jvm/java-8-oracle  
 #SPARK_WORKER_MEMORY=2g  
