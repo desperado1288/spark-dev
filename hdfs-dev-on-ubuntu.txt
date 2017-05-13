@@ -1,3 +1,4 @@
+#
 #hadoop download
 cd ~/Downloads
 wget http://mirror.stjschools.org/public/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz
